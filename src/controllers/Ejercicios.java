@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Ejercicios {
 
@@ -28,9 +29,25 @@ public class Ejercicios {
      * frecuencia.
      */
     public static boolean areAnagrams(String str1, String str2) {
-        throw new UnsupportedOperationException("Not implemented yet");
-
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+        for (char c : str1.toCharArray()) {
+            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
+        }
+        for (char c : str2.toCharArray()) {
+            if (!frequencyMap.containsKey(c)) {
+                return false;
+            }
+            frequencyMap.put(c, frequencyMap.get(c) - 1);
+            if (frequencyMap.get(c) == 0) {
+                frequencyMap.remove(c);
+            }
+        }
+        return frequencyMap.isEmpty();
     }
+    
 
     /*
      * Dado un array de números enteros y un objetivo, retorna los índices de dos
@@ -48,6 +65,14 @@ public class Ejercicios {
      * Output: null
      */
     public int[] sumatoriaDeDos(int[] nums, int objetivo) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complemento = objetivo - nums[i];
+        if (map.containsKey(complemento)) {
+            return new int[] { map.get(complemento), i };
+        }
+        map.put(nums[i], i);
     }
+    return null;
+}
 }

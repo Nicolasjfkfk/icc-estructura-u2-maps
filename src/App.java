@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 import controllers.Ejercicios;
 import controllers.EmpleadoContoller;
 import controllers.Mapa;
@@ -8,10 +10,10 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // Ejecuta el ejemplo de uso de HashMap con ejemplos sencillos
-        //runMapExample();
+        // runMapExample();
 
         // Ejecuta el ejemplo de gestión de empleados usando HashMap
-        runEmpleadoExample();
+        // runEmpleadoExample();
 
         // Ejecuta los ejercicios de sumatoria y anagramas
         runEjerccios();
@@ -58,6 +60,19 @@ public class App {
     }
 
     private static void runEjerccios() {
+    Ejercicios ejercicios = new Ejercicios();
 
+    // Prueba de areAnagrams
+    System.out.println("\nPrueba de anagramas:");
+    System.out.println("Anagramas (listen, silent): " + Ejercicios.areAnagrams("listen", "silent")); 
+    System.out.println("Anagramas (hello, bello): " + Ejercicios.areAnagrams("hello", "bello"));     
+    System.out.println("Anagramas (triangle, integral): " + Ejercicios.areAnagrams("triangle", "integral"));
+    // Prueba de sumatoriaDeDos
+    System.out.println("\nPrueba de sumatoriaDeDos:");
+    int[] nums = {9, 2, 3, 6};
+    int[] resultado = ejercicios.sumatoriaDeDos(nums, 5);
+    System.out.println("Índices para objetivo 5: " + Arrays.toString(resultado)); 
+    resultado = ejercicios.sumatoriaDeDos(nums, 10);
+    System.out.println("Índices para objetivo 10: " + Arrays.toString(resultado)); 
     }
 }
